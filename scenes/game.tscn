@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://b81snnkf3qw0m"]
+[gd_scene load_steps=12 format=4 uid="uid://b81snnkf3qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cfj37ephlkj7k" path="res://assets/images/world_tileset.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bipbmn37c43w6" path="res://scenes/paddle_right.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://daifjl06kfsg" path="res://scenes/killzones.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("3_lnu2h")
@@ -148,6 +149,10 @@ size = Vector2(670.5, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(672, 20)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -155,7 +160,8 @@ tile_map_data = PackedByteArray("AAD0/wAAAAACAAkAAAD0/wEAAAACAAkAAAD0/wMAAAACAAk
 tile_set = SubResource("TileSet_iywne")
 
 [node name="Ball" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(0, 225)
+position = Vector2(0, 8)
+collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -179,3 +185,16 @@ scale = Vector2(-0.056673083, -0.052954305)
 position = Vector2(299, 1)
 rotation = 4.712389
 scale = Vector2(0.056796677, -0.04964935)
+
+[node name="Killzones" parent="." instance=ExtResource("5_iywne")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones"]
+position = Vector2(308, -1)
+rotation = -1.5714676
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzones"]
+position = Vector2(-305, 1)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_u5sy4")
