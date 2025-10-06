@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://b81snnkf3qw0m"]
+[gd_scene load_steps=10 format=4 uid="uid://b81snnkf3qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bwo7qsky7kub2" path="res://scenes/paddle.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cfj37ephlkj7k" path="res://assets/images/world_tileset.png" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://bipbmn37c43w6" path="res://scenes/paddle_right.tscn" id="4_iywne"]
+[ext_resource type="Script" uid="uid://c84qve7jw3rnu" path="res://script/paddle-right.gd" id="4_lbhrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("3_lnu2h")
@@ -142,11 +142,14 @@ texture = ExtResource("3_lnu2h")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(670.5, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(69, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
-size = Vector2(672, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(69, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(16, 639.5)
 
 [node name="Game" type="Node2D"]
 
@@ -157,25 +160,41 @@ tile_set = SubResource("TileSet_iywne")
 [node name="Ball" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(0, 225)
 
+[node name="PaddleLeft" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(-305, 1)
+rotation = 1.5707964
+
+[node name="StaticBody2DLeft" type="StaticBody2D" parent="PaddleLeft"]
+position = Vector2(-2.999999, 23)
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="PaddleLeft/StaticBody2DLeft"]
+position = Vector2(2, -31)
+shape = SubResource("RectangleShape2D_lnu2h")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="PaddleRight" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(307, -1)
+rotation = -1.5707964
+script = ExtResource("4_lbhrr")
+speed = 10.0
 
-[node name="CollisionShape2D_bottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.75, 235)
+[node name="StaticBody2DRight" type="StaticBody2D" parent="PaddleRight"]
+
+[node name="CollisionShape2DReight" type="CollisionShape2D" parent="PaddleRight/StaticBody2DRight"]
+position = Vector2(-0.4999998, -8)
+shape = SubResource("RectangleShape2D_iywne")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="CollisionShape2DTop" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.75, -231)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_lbhrr")
 
-[node name="CollisionShape2D2_top" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, -236)
-shape = SubResource("RectangleShape2D_p57ef")
-
-[node name="Paddle-Left" parent="." instance=ExtResource("3_lbhrr")]
-position = Vector2(-296.00003, -0.99999994)
-rotation = 1.5707964
-scale = Vector2(-0.056673083, -0.052954305)
-
-[node name="Paddle-Right" parent="." instance=ExtResource("4_iywne")]
-position = Vector2(299, 1)
-rotation = 4.712389
-scale = Vector2(0.056796677, -0.04964935)
+[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 232)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_lbhrr")
