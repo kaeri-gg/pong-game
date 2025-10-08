@@ -3,14 +3,15 @@
 A simple **two-player Pong game** built using **Godot 4.5** — currently a **work in progress**.  
 The game follows the classic Pong mechanics: two paddles, a bouncing ball, and a scoreboard to track points.  
 
----
+<img width="1275" height="958" alt="image" src="https://github.com/user-attachments/assets/64290aba-ef4f-4207-b750-beacc3a0f2a5" />
+
 
 ## 🚧 Project Status
 > 🧱 **In Progress Work**  
 The core functionality is complete — ball movement, paddle control, collision sounds, and scoring are implemented.  
 Future updates will focus on adding an AI opponent for single-player mode.
 
----
+
 
 ## 🕹️ Game Features & Requirements
 
@@ -30,14 +31,14 @@ Future updates will focus on adding an AI opponent for single-player mode.
   - A sound plays when the ball collides with a paddle or wall.  
   - A different sound plays when a player scores.
 
----
+
 
 ## 🧩 Future Enhancement
 
 - 🧠 **AI Opponent:**  
   Implement an AI paddle that follows the ball’s position, allowing for **single-player** gameplay. Game Menu 
 
----
+
 
 ## 🎮 Controls
 
@@ -49,7 +50,7 @@ Future updates will focus on adding an AI opponent for single-player mode.
 **Additional Controls:**
 - `R` → Reset / Restart the game
 
----
+
 
 ## 🕹️ How to Play
 
@@ -59,7 +60,7 @@ Future updates will focus on adding an AI opponent for single-player mode.
 4. The game continues indefinitely — you can reset anytime by pressing **R**.  
 5. First player to reach your chosen score (e.g., 10 points) wins the match!
 
----
+
 
 ## 🛠️ Tech Stack
 
@@ -68,7 +69,7 @@ Future updates will focus on adding an AI opponent for single-player mode.
 - **Audio:** `.wav` or `.ogg` files for collision and scoring sounds  
 - **Resolution:** 1290 × 960  
 
----
+
 
 ## 🧾 Credits
 
@@ -77,11 +78,12 @@ Future updates will focus on adding an AI opponent for single-player mode.
 - MUSIC by Brackeys, Sofia Thirslund
 - FONTS by Jayvee Enaguas - HarvettFox96 - (https://www.dafont.com/pixel-operator.font?l[]=10&l[]=1)
 
----
+
 
 ## 🪐 License
 
 This project is shared for educational purposes.  
 Feel free to fork and experiment with it. Please credit the original author if reused or modified.
 
----
+
+
