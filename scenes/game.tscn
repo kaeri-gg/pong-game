@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://b81snnkf3qw0m"]
+[gd_scene load_steps=17 format=3 uid="uid://b81snnkf3qw0m"]
 
 [ext_resource type="Texture2D" uid="uid://cxw2nt54ymb52" path="res://assets/images/pong-bg.png" id="1_0tnpc"]
 [ext_resource type="Script" uid="uid://52m0aoxyts84" path="res://game_manager.gd" id="1_gee14"]
+[ext_resource type="Script" uid="uid://dc10ewq8gk7v0" path="res://scripts/game.gd" id="1_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bipbmn37c43w6" path="res://scenes/paddle_right.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://crmt4gt1catl8" path="res://scenes/killzone_right.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://di7ammir16hcp" path="res://scenes/killzone_left.tscn" id="6_u5sy4"]
 [ext_resource type="FontFile" uid="uid://ty1s248rfhvq" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
+[ext_resource type="FontFile" uid="uid://3alms6mdxset" path="res://assets/fonts/SnowburstOne-Regular.ttf" id="9_0tnpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(670.5, 20)
@@ -29,6 +31,7 @@ size = Vector2(489.99707, 33.996372)
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, 5)
+script = ExtResource("1_vtaks")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -320.0
@@ -105,6 +108,7 @@ shape = SubResource("RectangleShape2D_0tnpc")
 [node name="Labels" type="Node" parent="."]
 
 [node name="Score-Left" type="Label" parent="Labels"]
+texture_filter = 1
 offset_left = -44.0
 offset_top = -201.0
 offset_right = -1.0
@@ -115,6 +119,7 @@ theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="Score-Right" type="Label" parent="Labels"]
+texture_filter = 1
 offset_top = -201.0
 offset_right = 40.0
 offset_bottom = -177.0
@@ -125,22 +130,63 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="Player 1 - Label" type="Label" parent="Labels"]
-offset_left = -286.0
-offset_top = 175.0
-offset_right = -153.0
-offset_bottom = 210.0
+texture_filter = 1
+offset_left = -287.0
+offset_top = 210.0
+offset_right = -154.0
+offset_bottom = 245.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 9
 text = "press W key
 press S Key"
+uppercase = true
 
 [node name="Player 2 - Label" type="Label" parent="Labels"]
-offset_left = 140.0
-offset_top = 172.0
-offset_right = 285.0
-offset_bottom = 207.0
+texture_filter = 1
+offset_left = 139.0
+offset_top = 207.0
+offset_right = 284.0
+offset_bottom = 242.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 9
 text = "use arrow up
 use arrow down"
 horizontal_alignment = 2
+uppercase = true
+
+[node name="Reset" type="Label" parent="Labels"]
+texture_filter = 1
+offset_left = -81.0
+offset_top = 214.0
+offset_right = 64.0
+offset_bottom = 249.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 9
+text = "press R  to reset"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="Player 1" type="Label" parent="Labels"]
+texture_filter = 1
+offset_left = -287.0
+offset_top = -218.0
+offset_right = -247.0
+offset_bottom = -195.0
+theme_override_colors/font_color = Color(0.24429417, 0.0005435887, 0.60466045, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("9_0tnpc")
+text = "Player 1"
+
+[node name="Player 2" type="Label" parent="Labels"]
+texture_filter = 1
+offset_left = 218.0
+offset_top = -218.0
+offset_right = 293.0
+offset_bottom = -195.0
+theme_override_colors/font_color = Color(0.7115901, 0.9272608, 0.9999997, 1)
+theme_override_fonts/font = ExtResource("9_0tnpc")
+text = "Player 2"
