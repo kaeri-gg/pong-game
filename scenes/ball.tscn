@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dioto654ehrut"]
+[gd_scene load_steps=12 format=3 uid="uid://dioto654ehrut"]
 
 [ext_resource type="Texture2D" uid="uid://br54bqv2bpu20" path="res://assets/images/assets-01.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://deomwjvsqelgb" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://c82af4fanb54m" path="res://assets/sounds/collide.wav" id="3_f7cbr"]
+[ext_resource type="AudioStream" uid="uid://ce86htsifuqdh" path="res://assets/sounds/score.wav" id="4_4dx81"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxlvu"]
 atlas = ExtResource("1_7s4qf")
@@ -62,3 +64,11 @@ frame_progress = 0.7615948
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_v8l5b")
+
+[node name="CollideSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f7cbr")
+bus = &"SF"
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4dx81")
+bus = &"SF"

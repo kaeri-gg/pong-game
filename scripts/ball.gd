@@ -1,6 +1,9 @@
 class_name Ball
 extends CharacterBody2D
 
+@onready var collide_sound: AudioStreamPlayer2D = $CollideSound
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
+
 const SPEED = 300.0
 var direction: Vector2
 
@@ -14,6 +17,8 @@ func _physics_process(delta: float) -> void:
 		# Reflect the velocity vector when hitting something
 		var normal = collision.get_normal()
 		velocity = velocity.bounce(normal)
+		
+		collide_sound.play()
 
 
 # Get random horizontal direction
@@ -54,3 +59,5 @@ func reset() -> void:
 	direction = get_random_direction()
 	velocity = direction * SPEED
 	
+func play_score_sound() -> void:
+	score_sound.play()
