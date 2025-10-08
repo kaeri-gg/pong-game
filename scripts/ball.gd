@@ -1,14 +1,11 @@
+class_name Ball
 extends CharacterBody2D
 
 const SPEED = 300.0
-
-var direction = Vector2.ZERO
+var direction: Vector2
 
 func _ready() -> void:
-	# Start the ball in a random horizontal direction
-	# With random vertical rotation
-	direction = get_random_direction()
-	velocity = direction * SPEED
+	reset()
 
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
@@ -48,3 +45,12 @@ func get_random_direction() -> Vector2:
 	var y_dir = get_random_y()
 	
 	return get_direction_vector(x_dir, y_dir)
+	
+func reset() -> void:
+	position = Vector2.ZERO  
+	
+	# Start the ball in a random horizontal direction
+	# With random vertical rotation
+	direction = get_random_direction()
+	velocity = direction * SPEED
+	

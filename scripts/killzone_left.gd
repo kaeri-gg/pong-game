@@ -1,13 +1,16 @@
 extends Area2D
 
 @onready var timer: Timer = $Timer
+@onready var game_manager: Node = %GameManager
+@onready var ball: Ball = %Ball
+
 
 func _on_body_entered(body: Node) -> void:
-	body.get_node("CollisionShape2D").queue_free()
-
-	print("Killzone Left: Ball passed: ", body)
-
-	timer.start()
+	if body is Ball:
+		game_manager.right_add_point()
+		timer.start()
 	
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	timer.stop()
+	ball.reset()
+	

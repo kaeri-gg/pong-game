@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://daifjl06kfsg"]
+
+[sub_resource type="GDScript" id="GDScript_wvktn"]
+script/source = "extends Area2D
+
+@onready var timer: Timer = $Timer
+
+func _on_body_entered(body: Node) -> void:
+	body.get_node(\"CollisionShape2D\").queue_free()
+
+	print(\"Ball passed the line\", body)
+
+	timer.start()
+	
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()
+"
+
+[node name="Killzones" type="Area2D"]
+script = SubResource("GDScript_wvktn")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
