@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://b81snnkf3qw0m"]
+[gd_scene load_steps=15 format=4 uid="uid://b81snnkf3qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cfj37ephlkj7k" path="res://assets/images/world_tileset.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bipbmn37c43w6" path="res://scenes/paddle_right.tscn" id="4_iywne"]
-[ext_resource type="PackedScene" uid="uid://daifjl06kfsg" path="res://scenes/killzones.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://crmt4gt1catl8" path="res://scenes/killzone_right.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://di7ammir16hcp" path="res://scenes/killzone_left.tscn" id="6_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("3_lnu2h")
@@ -155,9 +156,11 @@ size = Vector2(1270.4446, 283.26343)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
 size = Vector2(1267.6799, 281.97778)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(492, 32)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(489.99707, 33.996372)
 
 [node name="Game" type="Node2D"]
 
@@ -202,15 +205,18 @@ collision_mask = 1
 position = Vector2(3.4332275e-05, 0)
 shape = SubResource("RectangleShape2D_u5sy4")
 
-[node name="Killzones" parent="." instance=ExtResource("5_iywne")]
+[node name="Killzone-Right" parent="." instance=ExtResource("6_p57ef")]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones"]
-position = Vector2(308, -1)
-rotation = -1.5714676
-shape = SubResource("WorldBoundaryShape2D_p57ef")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone-Right"]
+position = Vector2(320, 0)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_gee14")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzones"]
-position = Vector2(-305, 1)
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_u5sy4")
+[node name="Killzone-Left" parent="." instance=ExtResource("6_u5sy4")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone-Left"]
+position = Vector2(-319.8482, 0.055792537)
+rotation = 1.5742507
+shape = SubResource("RectangleShape2D_0tnpc")

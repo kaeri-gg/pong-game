@@ -5,7 +5,7 @@ extends Area2D
 func _on_body_entered(body: Node) -> void:
 	body.get_node("CollisionShape2D").queue_free()
 
-	print("Ball passed the line", body)
+	print("Killzone Right: Ball passed: ", body)
 
 	timer.start()
 	
