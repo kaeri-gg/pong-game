@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6delkoxgfy7x"]
+[gd_scene load_steps=3 format=3 uid="uid://b6delkoxgfy7x"]
 
 [ext_resource type="Script" uid="uid://beak7cph0yly0" path="res://scripts/paddle-left.gd" id="1_jgqry"]
 [ext_resource type="Texture2D" uid="uid://br54bqv2bpu20" path="res://assets/images/assets-01.png" id="1_kuuw3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgqry"]
-size = Vector2(1285, 269)
 
 [node name="Paddle-Left" type="CharacterBody2D"]
 script = ExtResource("1_jgqry")
@@ -13,8 +10,3 @@ script = ExtResource("1_jgqry")
 texture = ExtResource("1_kuuw3")
 region_enabled = true
 region_rect = Rect2(354.94208, 1847.5193, 1289.584, 272.6648)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0.5)
-shape = SubResource("RectangleShape2D_jgqry")
-one_way_collision = true

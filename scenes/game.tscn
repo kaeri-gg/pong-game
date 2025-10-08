@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b81snnkf3qw0m"]
+[gd_scene load_steps=14 format=4 uid="uid://b81snnkf3qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
@@ -149,6 +149,12 @@ size = Vector2(670.5, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(672, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(1270.4446, 283.26343)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
+size = Vector2(1267.6799, 281.97778)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
@@ -181,10 +187,20 @@ position = Vector2(-296.00003, -0.99999994)
 rotation = 1.5707964
 scale = Vector2(-0.056673083, -0.052954305)
 
+[node name="CollisionShape2D-Left" type="CollisionShape2D" parent="Paddle-Left"]
+position = Vector2(5.1498413e-05, -9.441406)
+scale = Vector2(0.9999996, 0.99999976)
+shape = SubResource("RectangleShape2D_iywne")
+
 [node name="Paddle-Right" parent="." instance=ExtResource("4_iywne")]
 position = Vector2(299, 1)
 rotation = 4.712389
 scale = Vector2(0.056796677, -0.04964935)
+collision_mask = 1
+
+[node name="CollisionShape2D-Right" type="CollisionShape2D" parent="Paddle-Right"]
+position = Vector2(3.4332275e-05, 0)
+shape = SubResource("RectangleShape2D_u5sy4")
 
 [node name="Killzones" parent="." instance=ExtResource("5_iywne")]
 collision_mask = 2
