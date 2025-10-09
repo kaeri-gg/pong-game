@@ -57,7 +57,7 @@ script = ExtResource("1_cxlvu")
 scale = Vector2(0.10649609, 0.109197736)
 sprite_frames = SubResource("SpriteFrames_fwo8l")
 autoplay = "default"
-frame_progress = 0.93313473
+frame_progress = 0.89564615
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v8l5b")

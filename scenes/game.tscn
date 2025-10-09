@@ -71,7 +71,7 @@ rotation = -3.1415927
 scale = Vector2(-0.11287038, 0.11165004)
 
 [node name="CollisionShape2D-Left" type="CollisionShape2D" parent="Paddles/Paddle-Left"]
-position = Vector2(0.00048828125, 0.12838364)
+position = Vector2(0.00048828125, 26.707764)
 rotation = 1.5707964
 scale = Vector2(0.9999992, 0.9999991)
 shape = SubResource("RectangleShape2D_iywne")
@@ -82,7 +82,7 @@ scale = Vector2(0.11545847, -0.111050054)
 collision_mask = 1
 
 [node name="CollisionShape2D-Right" type="CollisionShape2D" parent="Paddles/Paddle-Right"]
-position = Vector2(-0.03540039, 0.2832241)
+position = Vector2(-0.03515625, 0.28320313)
 rotation = 1.5780694
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_u5sy4")
@@ -131,9 +131,9 @@ horizontal_alignment = 2
 
 [node name="Player 1 - Label" type="Label" parent="Labels"]
 texture_filter = 1
-offset_left = -287.0
+offset_left = -283.0
 offset_top = 210.0
-offset_right = -154.0
+offset_right = -150.0
 offset_bottom = 245.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
 theme_override_fonts/font = ExtResource("7_u5sy4")
@@ -144,9 +144,9 @@ uppercase = true
 
 [node name="Player 2 - Label" type="Label" parent="Labels"]
 texture_filter = 1
-offset_left = 139.0
+offset_left = 135.0
 offset_top = 207.0
-offset_right = 284.0
+offset_right = 280.0
 offset_bottom = 242.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
 theme_override_fonts/font = ExtResource("7_u5sy4")
@@ -170,11 +170,24 @@ horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
+[node name="Speed Counter" type="Label" parent="Labels"]
+texture_filter = 1
+offset_left = -74.0
+offset_top = -174.0
+offset_right = 71.0
+offset_bottom = -139.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Player 1" type="Label" parent="Labels"]
 texture_filter = 1
-offset_left = -287.0
+offset_left = -283.0
 offset_top = -218.0
-offset_right = -247.0
+offset_right = -212.0
 offset_bottom = -195.0
 theme_override_colors/font_color = Color(0.24429417, 0.0005435887, 0.60466045, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -183,9 +196,9 @@ text = "Player 1"
 
 [node name="Player 2" type="Label" parent="Labels"]
 texture_filter = 1
-offset_left = 218.0
+offset_left = 214.0
 offset_top = -218.0
-offset_right = 293.0
+offset_right = 289.0
 offset_bottom = -195.0
 theme_override_colors/font_color = Color(0.7115901, 0.9272608, 0.9999997, 1)
 theme_override_fonts/font = ExtResource("9_0tnpc")

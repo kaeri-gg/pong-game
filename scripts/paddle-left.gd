@@ -1,3 +1,4 @@
+class_name PaddleLeft
 extends CharacterBody2D
 
 @export var speed: float = 700.0
@@ -5,7 +6,7 @@ extends CharacterBody2D
 func _physics_process(_delta: float) -> void:
 	
 	# Each frame start it is Zero vector Vector(0,0)
-	var direction = Vector2.ZERO
+	var direction: = Vector2.ZERO
 
 	# If pressed change direction Y
 	if Input.is_action_pressed("paddleLeft_up"):
