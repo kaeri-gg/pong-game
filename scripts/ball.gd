@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var speed_counter: Label = $"../Labels/Speed Counter"
 
 const BASE_SPEED: = 300.0
-const SPEED_INCREMENT: = 40.0
+const SPEED_INCREMENT: = 50.0
 const MAX_SPEED: = 800.0
 
 var current_speed: float

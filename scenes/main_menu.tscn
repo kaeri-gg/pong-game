@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://iavtycb1q548"]
+
+[ext_resource type="Texture2D" uid="uid://igwd6qmh5dja" path="res://assets/images/main-menu-bg.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://ulijpgg04d7f" path="res://assets/images/pong-logo.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cxw2nt54ymb52" path="res://assets/images/pong-bg.png" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://3alms6mdxset" path="res://assets/fonts/SnowburstOne-Regular.ttf" id="3_8ln24"]
+[ext_resource type="FontFile" uid="uid://bliqvf8ghvqa3" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_rtw2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.9217678, 0.5630419, 0.97349685, 1)
+border_color = Color(0.9382185, 0.9044669, 0.955555, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.96973926, 0.4747963, 0.9469611, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -319.0
+offset_top = -239.0
+offset_right = 5015.0
+offset_bottom = 3761.0
+scale = Vector2(0.11988827, 0.11985878)
+texture = ExtResource("1_l6cm7")
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = -125.00001
+offset_top = -203.99998
+offset_right = 3613.0
+offset_bottom = 1951.0
+scale = Vector2(0.06350438, 0.062654965)
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer2"]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("2_bqqt6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = -110.0
+offset_top = -57.0
+offset_right = 112.0
+offset_bottom = 111.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.03
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 13
+text = "Select Player Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(109, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_pressed = true
+text = "1 Player"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(109, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_pressed = true
+text = "2 Players"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 13
+text = "Select Difficulty"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
+toggle_mode = true
+button_pressed = true
+text = "Easy"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
+toggle_mode = true
+button_pressed = true
+text = "Hard"
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -72.0
+offset_top = 164.0
+offset_right = 80.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 10
+text = "Start Game
+"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -320.0
+offset_top = -241.0
+offset_right = 5014.0
+offset_bottom = 3759.0
+scale = Vector2(0.11996206, 0.12031772)
+texture = ExtResource("2_ekxnf")
