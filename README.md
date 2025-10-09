@@ -3,13 +3,13 @@
 A simple **two-player Pong game** built using **Godot 4.5** — currently a **work in progress**.  
 The game follows the classic Pong mechanics: two paddles, a bouncing ball, and a scoreboard to track points.  
 
-<img width="1275" height="958" alt="image" src="https://github.com/user-attachments/assets/64290aba-ef4f-4207-b750-beacc3a0f2a5" />
+<img width="1274" height="956" alt="image" src="https://github.com/user-attachments/assets/18259177-fa17-4372-abd8-507fa5517205" />
 
 
 ## 🚧 Project Status
 > 🧱 **In Progress Work**  
 The core functionality is complete — ball movement, paddle control, collision sounds, and scoring are implemented.  
-Future updates will focus on adding an AI opponent for single-player mode.
+Future updates will focus on adding game settings, and player modes.
 
 
 
@@ -24,6 +24,7 @@ Future updates will focus on adding an AI opponent for single-player mode.
 - **Ball Mechanics**  
   - The ball moves automatically at the start of the game.  
   - It bounces off walls and paddles based on collision direction.
+  - Ball's speed increases as it hits the paddle.
 - **Scoring System**  
   - When the ball passes a paddle and leaves the playfield, the opposite player scores a point.  
   - The score is tracked and displayed on screen.
@@ -35,8 +36,8 @@ Future updates will focus on adding an AI opponent for single-player mode.
 
 ## 🧩 Future Enhancement
 
-- 🧠 **AI Opponent:**  
-  Implement an AI paddle that follows the ball’s position, allowing for **single-player** gameplay. Game Menu 
+  - Implement an AI paddle that follows the ball’s position, allowing for **single-player** gameplay.
+  - Game Settings
 
 
 
@@ -84,6 +85,7 @@ Future updates will focus on adding an AI opponent for single-player mode.
 
 This project is shared for educational purposes.  
 Feel free to fork and experiment with it. Please credit the original author if reused or modified.
+
 
 
 
