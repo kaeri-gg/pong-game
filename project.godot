@@ -23,7 +23,6 @@ Music="*res://scenes/music.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=960
-window/size/resizable=false
 window/stretch/mode="viewport"
 
 [input]
