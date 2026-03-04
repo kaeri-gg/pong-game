@@ -63,8 +63,9 @@ func get_direction_vector(x_dir: int, y_dir: float) -> Vector2:
 	# We only need its direction
 	return Vector2(x_dir, y_dir).normalized()
 
+
 func get_random_direction() -> Vector2:
-	var x_dir: = get_random_x()
+	var x_dir: = get_random_x() 
 	var y_dir: = get_random_y()
 	
 	return get_direction_vector(x_dir, y_dir)

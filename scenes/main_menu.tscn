@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://iavtycb1q548"]
 
 [ext_resource type="Texture2D" uid="uid://igwd6qmh5dja" path="res://assets/images/main-menu-bg.png" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://b02tjbqkv17jh" path="res://scripts/main-menu.gd" id="1_rtw2f"]
+[ext_resource type="Script" path="res://scripts/main-menu.gd" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://ulijpgg04d7f" path="res://assets/images/pong-logo.png" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://3alms6mdxset" path="res://assets/fonts/SnowburstOne-Regular.ttf" id="3_8ln24"]
 [ext_resource type="FontFile" uid="uid://bliqvf8ghvqa3" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_rtw2f"]
