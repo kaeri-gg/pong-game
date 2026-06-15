@@ -15,8 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="pong-game"
+config/description="A simple two-player Pong game built using Godot and currently a work in progress.
+The game follows the classic Pong mechanics: two paddles, a bouncing ball, and a scoreboard to track points."
 run/main_scene="uid://iavtycb1q548"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,8 +34,9 @@ gdscript/warnings/untyped_declaration=1
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=960
-window/stretch/mode="viewport"
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -67,4 +72,6 @@ press_reset={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true

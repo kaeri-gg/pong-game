@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6delkoxgfy7x"]
+[gd_scene format=3 uid="uid://b6delkoxgfy7x"]
 
-[ext_resource type="Script" uid="uid://beak7cph0yly0" path="res://scripts/paddle-left.gd" id="1_jgqry"]
+[ext_resource type="Script" uid="uid://bne6umbru11mn" path="res://scripts/paddle.gd" id="1_jgqry"]
 [ext_resource type="Texture2D" uid="uid://cuonkm25wd1px" path="res://assets/images/pong-elements.png" id="2_jgqry"]
 
-[node name="Paddle-Left" type="CharacterBody2D"]
+[node name="Paddle-Left" type="CharacterBody2D" unique_id=1516157598]
 script = ExtResource("1_jgqry")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1150898390]
 texture = ExtResource("2_jgqry")
 region_enabled = true
 region_rect = Rect2(774.69135, 210.48038, 169.77234, 798.11694)
