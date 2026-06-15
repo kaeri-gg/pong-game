@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bipbmn37c43w6"]
+[gd_scene format=3 uid="uid://bipbmn37c43w6"]
 
-[ext_resource type="Script" uid="uid://c84qve7jw3rnu" path="res://scripts/paddle-right.gd" id="2_dr68w"]
+[ext_resource type="Script" uid="uid://bne6umbru11mn" path="res://scripts/paddle.gd" id="1_dr68w"]
 [ext_resource type="Texture2D" uid="uid://cuonkm25wd1px" path="res://assets/images/pong-elements.png" id="2_qns8v"]
 
-[node name="Paddle-Right" type="CharacterBody2D"]
+[node name="Paddle-Right" type="CharacterBody2D" unique_id=1508259739]
 collision_mask = 2
-script = ExtResource("2_dr68w")
+script = ExtResource("1_dr68w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=472088383]
 texture = ExtResource("2_qns8v")
 region_enabled = true
 region_rect = Rect2(1178.6001, 209.06523, 164.82568, 786.6949)

@@ -6,14 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://dioto654ehrut" path="res://scenes/ball.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b6delkoxgfy7x" path="res://scenes/paddle_left.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bipbmn37c43w6" path="res://scenes/paddle_right.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://crmt4gt1catl8" path="res://scenes/killzone_right.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://di7ammir16hcp" path="res://scenes/killzone_left.tscn" id="6_u5sy4"]
 [ext_resource type="FontFile" uid="uid://ty1s248rfhvq" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://3alms6mdxset" path="res://assets/fonts/SnowburstOne-Regular.ttf" id="9_0tnpc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(1280, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(1280.125, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(788.4345, 150.03165)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
 size = Vector2(774.97217, 150.19844)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(825, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(826.1939, 63.615856)
 
 [node name="Game" type="Control" unique_id=2070247712]
 layout_mode = 3
@@ -54,7 +68,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.24429417, 0.0005435887, 0.60466045, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("9_0tnpc")
-theme_override_font_sizes/font_size = 25
 text = "Player 1"
 
 [node name="Player 2" type="Label" parent="Labels/Player Name" unique_id=710693975]
@@ -62,7 +75,6 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7115901, 0.9272608, 0.9999997, 1)
 theme_override_fonts/font = ExtResource("9_0tnpc")
-theme_override_font_sizes/font_size = 25
 text = "Player 2"
 horizontal_alignment = 2
 
@@ -91,7 +103,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="Score-Right" type="Label" parent="Labels/Score/VBoxContainer/HBoxContainer" unique_id=861783236]
@@ -100,7 +112,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "0"
 horizontal_alignment = 2
 
@@ -110,12 +122,12 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 9
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Instructions" type="MarginContainer" parent="Labels" unique_id=1928316576]
+[node name="MarginContainer" type="MarginContainer" parent="Labels" unique_id=1928316576]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -127,7 +139,7 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Player 1 - Label" type="Label" parent="Labels/Instructions" unique_id=187913019]
+[node name="Player 1 - Label" type="Label" parent="Labels/MarginContainer" unique_id=187913019]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
@@ -137,7 +149,7 @@ text = "press W key
 press S Key"
 uppercase = true
 
-[node name="Player 2 - Label" type="Label" parent="Labels/Instructions" unique_id=1287794748]
+[node name="Player 2 - Label" type="Label" parent="Labels/MarginContainer" unique_id=1287794748]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
@@ -148,7 +160,7 @@ use arrow down"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="Reset" type="Label" parent="Labels/Instructions" unique_id=2048086732]
+[node name="Reset" type="Label" parent="Labels/MarginContainer" unique_id=2048086732]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
@@ -170,48 +182,64 @@ position = Vector2(640, 360)
 scale = Vector2(2, 2)
 collision_layer = 2
 
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1085765041]
+
+[node name="CollisionShape2D_top" type="CollisionShape2D" parent="Walls" unique_id=1808953913]
+position = Vector2(640, -26)
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="CollisionShape2D_bottom" type="CollisionShape2D" parent="Walls" unique_id=422134292]
+position = Vector2(640.0625, 746)
+shape = SubResource("RectangleShape2D_lbhrr")
+
 [node name="Paddles" type="Node" parent="." unique_id=284192944]
 
-[node name="Left" type="MarginContainer" parent="Paddles" unique_id=1422760381]
-anchors_preset = 4
+[node name="MarginContainer" type="MarginContainer" parent="Paddles" unique_id=1422760381]
+anchors_preset = 14
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
 
-[node name="PaddleLeft" parent="Paddles/Left" unique_id=1067379353 instance=ExtResource("3_lbhrr")]
-unique_name_in_owner = true
-position = Vector2(45, 7)
+[node name="Paddle-Left" parent="Paddles/MarginContainer" unique_id=1067379353 instance=ExtResource("3_lbhrr")]
+position = Vector2(46, 7)
 scale = Vector2(0.2, 0.2)
 
-[node name="CollisionShape2D-Left" type="CollisionShape2D" parent="Paddles/Left/PaddleLeft" unique_id=1192809706]
-position = Vector2(0, 1.708)
+[node name="CollisionShape2D-Left" type="CollisionShape2D" parent="Paddles/MarginContainer/Paddle-Left" unique_id=1192809706]
+position = Vector2(0.00048828125, 26.707764)
 rotation = 1.5707964
 scale = Vector2(0.9999992, 0.9999991)
 shape = SubResource("RectangleShape2D_iywne")
 
-[node name="Right" type="MarginContainer" parent="Paddles" unique_id=1492080184]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="PaddleRight" parent="Paddles/Right" unique_id=1918572976 instance=ExtResource("4_iywne")]
-unique_name_in_owner = true
-position = Vector2(-45, 7)
+[node name="Paddle-Right" parent="Paddles/MarginContainer" unique_id=1918572976 instance=ExtResource("4_iywne")]
+position = Vector2(1223.0001, 5)
 scale = Vector2(0.2, 0.2)
 collision_mask = 1
-up_action = "paddleRight_up"
-down_action = "paddleRight_down"
 
-[node name="CollisionShape2D-Right" type="CollisionShape2D" parent="Paddles/Right/PaddleRight" unique_id=13875167]
-position = Vector2(-0.035, 7.283)
-rotation = -1.5707964
+[node name="CollisionShape2D-Right" type="CollisionShape2D" parent="Paddles/MarginContainer/Paddle-Right" unique_id=13875167]
+position = Vector2(-0.03515625, 0.28320313)
+rotation = 1.5780694
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_u5sy4")
+
+[node name="Killzones" type="Node" parent="." unique_id=1691213666]
+
+[node name="Killzone-Right" parent="Killzones" unique_id=943819514 instance=ExtResource("6_p57ef")]
+position = Vector2(976, 350)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Killzone-Right" unique_id=295462917]
+position = Vector2(315, 9.5)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="Killzone-Left" parent="Killzones" unique_id=515124651 instance=ExtResource("6_u5sy4")]
+position = Vector2(302, 366)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Killzone-Left" unique_id=771855453]
+position = Vector2(-318.6091, -6)
+rotation = 1.5707964
+scale = Vector2(0.9973445, 1.0251881)
+shape = SubResource("RectangleShape2D_0tnpc")

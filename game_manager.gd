@@ -2,8 +2,8 @@ extends Node
 
 @export var left_score: int = 0
 @export var right_score: int = 0
-@onready var score_left: Label = $"../Labels/Score-Left"
-@onready var score_right: Label = $"../Labels/Score-Right"
+@onready var score_left: Label = %"Score-Left"
+@onready var score_right: Label = %"Score-Right"
 
 func left_add_point() -> void:
 	left_score += 1 

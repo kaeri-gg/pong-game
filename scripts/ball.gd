@@ -3,11 +3,13 @@ extends CharacterBody2D
 
 @onready var collide_sound: AudioStreamPlayer2D = $CollideSound
 @onready var score_sound: AudioStreamPlayer2D = $ScoreSound
-@onready var speed_counter: Label = $"../Labels/Speed Counter"
+@onready var speed_counter: Label = %"SpeedCounter"
+@onready var game_manager: Node = %GameManager
 
 const BASE_SPEED: = 300.0
-const SPEED_INCREMENT: = 40.0
+const SPEED_INCREMENT: = 50.0
 const MAX_SPEED: = 800.0
+const BALL_RADIUS: = 20.0 
 
 var current_speed: float
 var direction: Vector2
@@ -17,17 +19,50 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var collision: = move_and_collide(velocity * delta)
-	
+
 	if collision:
-		# Reflect the velocity vector when hitting something
+		# Reflect the velocity vector when hitting something (e.g. a paddle)
 		var normal: = collision.get_normal()
 		velocity = velocity.bounce(normal)
-		
+
 		collide_sound.play()
-		
+
 		var body: = collision.get_collider()
-		if body is PaddleLeft or body is PaddleRight:
+		if body is Paddle:
 			increase_speed()
+
+	# Top/bottom act as walls (bounce); left/right edges score.
+	# Both use the live viewport size, so they follow window resizing.
+	_bounce_off_top_bottom()
+	_check_score()
+
+# Bounce the ball off the top and bottom edges of the viewport
+func _bounce_off_top_bottom() -> void:
+	var view_height: = get_viewport_rect().size.y
+
+	if position.y < BALL_RADIUS and velocity.y < 0:
+		position.y = BALL_RADIUS
+		velocity.y = -velocity.y
+		collide_sound.play()
+	elif position.y > view_height - BALL_RADIUS and velocity.y > 0:
+		position.y = view_height - BALL_RADIUS
+		velocity.y = -velocity.y
+		collide_sound.play()
+
+# Score when the ball leaves the viewport on the left or right
+func _check_score() -> void:
+	var view_width: = get_viewport_rect().size.x
+
+	if position.x < 0:
+		# Ball passed the left edge -> right player scores
+		game_manager.right_add_point()
+		play_score_sound()
+		reset()
+	elif position.x > view_width:
+		# Ball passed the right edge -> left player scores
+		game_manager.left_add_point()
+		play_score_sound()
+		reset()
 
 func increase_speed() -> void:
 	# Min method returns minimum number and sets it as its current speed
@@ -63,14 +98,18 @@ func get_direction_vector(x_dir: int, y_dir: float) -> Vector2:
 	# We only need its direction
 	return Vector2(x_dir, y_dir).normalized()
 
+
 func get_random_direction() -> Vector2:
-	var x_dir: = get_random_x()
+	var x_dir: = get_random_x() 
 	var y_dir: = get_random_y()
 	
 	return get_direction_vector(x_dir, y_dir)
 	
 func reset() -> void:
-	position = Vector2.ZERO  
+	# Centers
+	# the ball based on the current viewport size,
+	# so it stays centered even if the window/screen is resized.
+	position = get_viewport_rect().size / 2
 	current_speed = BASE_SPEED
 	
 	# Start the ball in a random horizontal direction
